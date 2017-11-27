@@ -6,8 +6,21 @@ public class Attractor : MonoBehaviour
 {
 
     public static List<Attractor> Attractors;
-    public float G = 1f;
-    public Rigidbody2D rb;
+
+    public float mass = 1;
+    public float initalRotationDegreesClockwise = 0;
+    public float initalForce = 0;
+
+    private float G = 1f;
+    private Rigidbody2D rb;
+
+    void Start()
+    {
+        rb.mass = mass;
+        transform.Rotate(new Vector3(0, 0, -initalRotationDegreesClockwise));
+        rb.AddForce(transform.up * initalForce);
+    }
+
 
     void FixedUpdate()
     {
@@ -50,3 +63,4 @@ public class Attractor : MonoBehaviour
         rbToAttract.AddForce(force);
     }
 }
+
