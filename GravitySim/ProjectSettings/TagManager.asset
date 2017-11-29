@@ -42,3 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2647247789
+    locked: 0
+  - name: Guiding Graphics
+    uniqueID: 2029999251
+    locked: 0
+  - name: Attractor
+    uniqueID: 2757580339
+    locked: 0
