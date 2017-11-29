@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4626330245896050}
   - component: {fileID: 212173155339012942}
   - component: {fileID: 50400968791554900}
-  - component: {fileID: 114133483333516326}
   - component: {fileID: 58207631818124482}
+  - component: {fileID: 114133483333516326}
   m_Layer: 0
   m_Name: Jupiter
   m_TagString: ObjectWithMass
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mass: 121
   initalRotationDegreesClockwise: 0
-  initalForce: 91
+  initalForce: 0
 --- !u!212 &212173155339012942
 SpriteRenderer:
   m_ObjectHideFlags: 1
