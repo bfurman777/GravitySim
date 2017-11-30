@@ -9,16 +9,18 @@ public class Attractor : MonoBehaviour
 
     public float mass = 1;
     public float initalRotationDegreesClockwise = 0;
-    public float initalForce = 0;
+    public float initalVelocity = 0;
 
     private float G = 1f;
     private Rigidbody2D rb;
+	//private GameManagerScript gameManagerScript;
 
     void Start()
     {
+		//GameManagerScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManagerScript>();
         rb.mass = mass;
         transform.Rotate(new Vector3(0, 0, -initalRotationDegreesClockwise));
-        rb.AddForce(transform.up * initalForce);
+		rb.velocity = (transform.up * initalVelocity);
     }
 
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManagerScript : MonoBehaviour {
 
 	//show orevious trial
+	//explode planet image into bits on impact
     //arrowKeys to add force
     //thrust on your rocket?
     //online?
@@ -75,7 +76,7 @@ public class GameManagerScript : MonoBehaviour {
         if (phase == 1)
         {
             phase = 2;
-            Time.timeScale = 1;
+            Time.timeScale = .1f;
         }
     }
 }
