@@ -20,7 +20,7 @@ public class GameManagerScript : MonoBehaviour {
 
     public int phase = 1; //1=addForces, 2=actionAndControlCamera
     public GameObject playerObject;
-    public float distanceToForceConversionScalar = 77;
+    public float distanceToVelocityConversionScalar = 77;
 
     private Rigidbody2D playerRB;
 
@@ -37,9 +37,9 @@ public class GameManagerScript : MonoBehaviour {
             if (Input.GetMouseButtonDown(1))    //rightClick
             {
                 var distance = DistanceToMouseFromObject(playerObject);
-                var forceMagnitude = distance * distanceToForceConversionScalar;
+				var velocityMagnitude = distance * distanceToVelocityConversionScalar;
                 //print("D: " + distance + ", F:" + forceMagnitude);
-                playerRB.AddForce(forceMagnitude * playerObject.transform.up);
+				playerRB.velocity = velocityMagnitude * playerObject.transform.up;
                 ChangePhase();
             }
         }
