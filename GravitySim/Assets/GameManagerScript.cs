@@ -76,7 +76,7 @@ public class GameManagerScript : MonoBehaviour {
         if (phase == 1)
         {
             phase = 2;
-            Time.timeScale = .1f;
+            Time.timeScale = 1f;
         }
     }
 }
