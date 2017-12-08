@@ -7,6 +7,7 @@ public class CameraMouseFollower : MonoBehaviour
 
     public float dragSpeed = 0.005f;
     public float zoomSpeed = 10f;
+	public float maxZoom = 0.5f;
 
     private Vector3 dragOrigin;
     private SpriteRenderer nightSky;
@@ -45,8 +46,8 @@ public class CameraMouseFollower : MonoBehaviour
     void ZoomScreen()
     {
         Camera.main.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
-		if (Camera.main.orthographicSize <= 2f) {
-			Camera.main.orthographicSize = 2f;
+		if (Camera.main.orthographicSize <= maxZoom) {
+			Camera.main.orthographicSize = maxZoom;
 		}
         ResizeSpriteToScreen();
     }

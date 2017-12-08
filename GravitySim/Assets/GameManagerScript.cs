@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour {
 
+	//show orevious trial
+	//explode planet image into bits on impact
     //arrowKeys to add force
     //thrust on your rocket?
     //online?
@@ -18,8 +20,12 @@ public class GameManagerScript : MonoBehaviour {
 
     public int phase = 1; //1=addForces, 2=actionAndControlCamera
     public GameObject playerObject;
+<<<<<<< HEAD
     public float distanceToForceConversionScalar = 7;
     public GameObject whiteBar;
+=======
+    public float distanceToVelocityConversionScalar = 77;
+>>>>>>> bc1857a2eca1fad156253f83616e97e4bd55ea69
 
     private Rigidbody2D playerRB;
     private float delayTimeForNextDottedLine = 0.15f;    //seconds
@@ -52,9 +58,9 @@ public class GameManagerScript : MonoBehaviour {
             if (Input.GetMouseButtonDown(1))    //rightClick
             {
                 var distance = DistanceToMouseFromObject(playerObject);
-                var forceMagnitude = distance * distanceToForceConversionScalar;
-                print("D: " + distance + ", F:" + forceMagnitude);
-                playerRB.AddForce(forceMagnitude * playerObject.transform.up);
+				var velocityMagnitude = distance * distanceToVelocityConversionScalar;
+                //print("D: " + distance + ", F:" + forceMagnitude);
+				playerRB.velocity = velocityMagnitude * playerObject.transform.up;
                 ChangePhase();
             }
         }
@@ -92,7 +98,10 @@ public class GameManagerScript : MonoBehaviour {
         {
             phase = 2;
             Time.timeScale = 1f;
+<<<<<<< HEAD
             timeForNextDottedLine += delayTimeForNextDottedLine;
+=======
+>>>>>>> bc1857a2eca1fad156253f83616e97e4bd55ea69
         }
     }
 }

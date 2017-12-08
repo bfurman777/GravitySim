@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4388912539338022}
-  - component: {fileID: 212613627005939338}
   - component: {fileID: 50448956037225890}
   - component: {fileID: 58658904257228374}
   - component: {fileID: 114134834469616122}
@@ -91,6 +90,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mass: 1
   initalRotationDegreesClockwise: 0
+<<<<<<< HEAD
+  initalForce: 0
+=======
   initalForce: 91
 --- !u!212 &212613627005939338
 SpriteRenderer:
@@ -136,3 +138,4 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+>>>>>>> f75189b73f5df496a9a7ddfb97edb7ca65841a67

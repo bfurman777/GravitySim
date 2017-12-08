@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mass: 121
   initalRotationDegreesClockwise: 0
-  initalForce: 91
+  initalForce: 0
 --- !u!212 &212173155339012942
 SpriteRenderer:
   m_ObjectHideFlags: 1
