@@ -18,18 +18,35 @@ public class GameManagerScript : MonoBehaviour {
 
     public int phase = 1; //1=addForces, 2=actionAndControlCamera
     public GameObject playerObject;
-    public float distanceToForceConversionScalar = 77;
+    public float distanceToForceConversionScalar = 7;
+    public GameObject whiteBar;
 
     private Rigidbody2D playerRB;
+    private float delayTimeForNextDottedLine = 0.15f;    //seconds
+    private float timeForNextDottedLine;
 
     void Start () {
+        //find player????????????????
+
         Time.timeScale = 0;
         playerRB = playerObject.GetComponent<Rigidbody2D>();
-        phase = 1;
     }
 
 	void Update () {
-		if (phase == 1)
+        if (phase == 2)
+        {
+
+            LookAt2D(playerRB.gameObject, playerRB.velocity);
+
+            if (Time.time >= timeForNextDottedLine)
+            {
+                Instantiate(whiteBar, playerObject.transform.position, playerObject.transform.rotation);
+                print(Time.time);
+                timeForNextDottedLine += delayTimeForNextDottedLine;
+            }
+            
+        }
+        else if (phase == 1)
         {
             MousePositionInGameCordsAndRotateToward();
             if (Input.GetMouseButtonDown(1))    //rightClick
@@ -74,7 +91,8 @@ public class GameManagerScript : MonoBehaviour {
         if (phase == 1)
         {
             phase = 2;
-            Time.timeScale = 1;
+            Time.timeScale = 1f;
+            timeForNextDottedLine += delayTimeForNextDottedLine;
         }
     }
 }
