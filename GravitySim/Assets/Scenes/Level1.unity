@@ -640,7 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phase: 1
   playerObject: {fileID: 141119629}
-  distanceToForceConversionScalar: 1
+  distanceToVelocityConversionScalar: 3
 --- !u!4 &1182554617
 Transform:
   m_ObjectHideFlags: 0

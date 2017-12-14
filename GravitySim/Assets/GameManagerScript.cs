@@ -20,7 +20,7 @@ public class GameManagerScript : MonoBehaviour {
 
     public int phase = 1; //1=addForces, 2=actionAndControlCamera
     public GameObject playerObject;
-    public float distanceToVelocityConversionScalar = 77;
+    public float distanceToVelocityConversionScalar = 3;
 
     private Rigidbody2D playerRB;
 
@@ -31,20 +31,38 @@ public class GameManagerScript : MonoBehaviour {
     }
 
 	void Update () {
-		if (phase == 1)
-        {
-            MousePositionInGameCordsAndRotateToward();
-            if (Input.GetMouseButtonDown(1))    //rightClick
-            {
-                var distance = DistanceToMouseFromObject(playerObject);
+		if (Input.GetKeyDown ("f")) {
+			Vector3 newCameraPos = playerObject.transform.position;
+			newCameraPos.z = -10;
+			Camera.main.transform.position = newCameraPos;
+		}
+
+		if (phase == 1) {
+			MousePositionInGameCordsAndRotateToward ();
+			if (Input.GetMouseButtonDown (1)) {    //rightClick
+				var distance = DistanceToMouseFromObject (playerObject);
 				var velocityMagnitude = distance * distanceToVelocityConversionScalar;
-                //print("D: " + distance + ", F:" + forceMagnitude);
+				//print("D: " + distance + ", F:" + forceMagnitude);
 				playerRB.velocity = velocityMagnitude * playerObject.transform.up;
-                ChangePhase();
-            }
-        }
+				ChangePhase ();
+			}
+		} else if (phase == 2) {
+			Vector2 v = playerRB.velocity;
+			var angle = (Mathf.Atan2(v.y, v.x)-90) * Mathf.Rad2Deg;
+
+			playerRB.transform.rotation = Quaternion.AngleAxis (angle + 20, Vector3.forward);
+		}
     }
 
+
+	Vector3 MousePositionInGameCordsAndRotateToward()
+	{
+		var mousePos = Input.mousePosition;
+		var mouseObjectPos = Camera.main.ScreenToWorldPoint(mousePos);
+		mouseObjectPos.z = 0;
+		LookAt2D(playerObject, mouseObjectPos);
+		return mouseObjectPos;
+	}
 
     float DistanceToMouseFromObject(GameObject someObject)
     {
@@ -53,15 +71,6 @@ public class GameManagerScript : MonoBehaviour {
 
         var distanceVector = mousePosition - objectPosition;
         return distanceVector.magnitude;
-    }
-
-    Vector3 MousePositionInGameCordsAndRotateToward()
-    {
-        var mousePos = Input.mousePosition;
-        var mouseObjectPos = Camera.main.ScreenToWorldPoint(mousePos);
-        mouseObjectPos.z = 0;
-        LookAt2D(playerObject, mouseObjectPos);
-        return mouseObjectPos;
     }
 
     void LookAt2D(GameObject myObject, Vector3 target)
