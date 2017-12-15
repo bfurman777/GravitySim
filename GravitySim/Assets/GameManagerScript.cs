@@ -20,7 +20,8 @@ public class GameManagerScript : MonoBehaviour {
 
     public int phase = 1; //1=addForces, 2=actionAndControlCamera
     public GameObject playerObject;
-    public float distanceToVelocityConversionScalar = 3;
+    
+	private float distanceToVelocityConversionScalar = 2.3f;
 
     private Rigidbody2D playerRB;
 
@@ -46,14 +47,18 @@ public class GameManagerScript : MonoBehaviour {
 				playerRB.velocity = velocityMagnitude * playerObject.transform.up;
 				ChangePhase ();
 			}
-		} else if (phase == 2) {
-			Vector2 v = playerRB.velocity;
-			var angle = (Mathf.Atan2(v.y, v.x)-90) * Mathf.Rad2Deg;
-
-			playerRB.transform.rotation = Quaternion.AngleAxis (angle + 20, Vector3.forward);
+		}
+		else if (phase == 2) {
+			RotateToVelocity (playerRB);
 		}
     }
 
+	void RotateToVelocity(Rigidbody2D rb2d) {
+		Vector2 v = rb2d.velocity;
+		var angle = (Mathf.Atan2(v.y, v.x)-90) * Mathf.Rad2Deg;
+
+		rb2d.transform.rotation = Quaternion.AngleAxis (angle + 20, Vector3.forward);
+	}
 
 	Vector3 MousePositionInGameCordsAndRotateToward()
 	{

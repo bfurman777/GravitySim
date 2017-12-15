@@ -14,8 +14,7 @@ public class CheckWin : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter2D (Collision2D col)
-	{
-		print ("HI");
+	void OnTriggerEnter2D(Collider2D coll) {
+		print ("You Win!");
 	}
 }

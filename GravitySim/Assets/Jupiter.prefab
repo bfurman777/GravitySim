@@ -89,9 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16de0811ce13bbf4baacb81bbbac9d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 121
+  mass: 321
   initalRotationDegreesClockwise: 0
-  initalForce: 0
+  initalVelocity: 0
 --- !u!212 &212173155339012942
 SpriteRenderer:
   m_ObjectHideFlags: 1
