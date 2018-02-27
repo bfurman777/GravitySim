@@ -15,7 +15,7 @@ public class CameraMouseFollower : MonoBehaviour
     void Start()
     {
         nightSky = this.GetComponentInChildren<SpriteRenderer>();
-        //nightSky.enabled = true;
+        nightSky.enabled = true;
     }
 
     void Update()
